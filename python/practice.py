@@ -1,0 +1,206 @@
+# print('풍선')
+# print("나비")
+# print("ㅋㅋㅋㅋㅋ")
+# print("ㅋ"*9)
+
+# print(5>10)
+# print(5<10)
+# print(True)
+# print(False)
+# print(not True)
+# print(not False)
+# print(not (5>10))
+
+# 애완동물을 소개해주세요~
+# animal = '고양이'
+# age = 4
+# name = '해피'
+# hobby = '낮잠'
+# isAdult = age >= 3
+
+# print('우리집 '+ animal +'의 이름은 '+ name +'예요')
+# hobby = '공놀이'
+# print(name,'는 ', age,'살이며, ', hobby ,'을 아주 좋아해요')
+# print(name+'는 어른일까요? '+ str(isAdult))
+
+'''
+여러문장
+주석
+처리
+하는법
+작은 따음표
+'''
+
+# station = '신도림'
+# print(station + '행 열차가 들어오고 있습니다.')
+
+# print(1+1)
+# print(3-2)
+# print(5*2)
+# print(6/3)
+
+# print(2**3) # 2의 3제곱
+# print(10%3) # 나머지 구하기
+# print(5//3) # 몫 구하기
+
+# print(10 > 3)
+# print(4 >= 7)
+# print(10 < 3)
+# print(5 <= 5)
+
+# print(3 == 3)
+# print(4 == 2)
+# print(3 + 4 == 7)
+
+# print(1 != 3)
+# print(not(1 != 3))
+
+# # and 연산자
+# print((3 > 0) and (3 < 5))
+# print((3 > 0) & (3 < 5))
+
+# # or 연산자
+# print((3 > 0) or (3 > 5))
+# print((3 > 0) | (3 > 5))
+
+# print(2 + 3 * 4)
+# print((2 + 3) * 4)
+# number = 2 + 3 * 4
+# print(number)
+# number = number + 2
+# print(number)
+
+# number += 2
+# print(number)
+
+# number *= 2
+# print(number)
+
+# number /= 2
+# print(number)
+
+# number -= 2
+# print(number)
+
+# number %= 5
+# print(number)
+
+# print(abs(-5))
+# print(pow(4, 2))
+# print(4**2)
+# print(max(5, 12))
+# print(min(5, 12))
+# print(round(3.14))
+# print(round(4.99))
+
+# from math import *
+# print(floor(4.99)) # 내림
+# print(ceil(3.14)) # 올림
+# print(sqrt(16)) # 제곱근
+
+# from random import *
+
+# print(random()) # 0.0 ~ 1.0 미만의 임의의 값 생성
+# print(random() * 10)
+# print(int(random() * 100))
+# print(int(random()* 10) + 1)
+
+# print(int(random() * 45) + 1)
+# print(randrange(1, 46)) # 1 ~ 46 미만의 임의의 값 생성
+
+# print(randint(1,45)) # 1, 45 포함
+
+# from random import *
+# date = randint(4,28)
+# print('오프라인 스터디 모임 날짜는 매월 '+ str(date) + '일로 선정 되었습니다.')
+
+# sentence = '나는 소년입니다'
+# print(sentence)
+# sentence2 = "나는 소년입니다"
+# print(sentence2)
+# sentence3 = """나는 소년이고,
+# 엔터 누르면 나는 따로 있지요
+# 파이썬은 쉬워요"""
+# print(sentence3)
+
+# jumin = '990120-1234567'
+# print('성별 : ' + jumin[7])
+# print('연 : '+ jumin[0:2]) # 99
+# print('월 : ' + jumin[2:4])
+# print('일 : ' + jumin[4:6])
+
+# print('생년월일 : ' + jumin[:6])
+# print('뒤 7자리 : ' + jumin[7:])
+# print('뒤 7자리 (뒤에서부터) : ' + jumin[-7:])
+
+# python = 'Python is Amazing'
+# print(python.lower())
+# print(python.upper())
+# print(python[0].isupper())
+# print(len(python))
+# print(python.replace("Python", "Java"))
+
+# index = python.index('n')
+# print(index)
+# index = python.index('n', index + 1)
+# print(index)
+
+# print(python.find('Python'))
+# print(python.index('Python'))
+
+# print(python.find('Java')) # -1 출력
+# print(python.index('Java')) # 에러 뜸
+
+# # 방법 1
+# print('a' + 'b')
+# print('a', 'b')
+
+# print('나는 %d살입니다.' % 20)
+# print('나는 %s을 좋아해요.' % '파이썬')
+# print('Apple 은 %c로 시작해요.' % 'A')
+
+# print('나는 %s살입니다.' % 20)
+
+# print('나는 %s색과 %s색을 좋아해요.' % ('파란', '빨간'))
+
+# # 방법 2
+# print('나는 {}살입니다.'.format(20))
+# print('나는 {1}색과 {0}색을 좋아해요.'.format('파란', '빨간'))
+
+# # 방법 3
+# print('나는 {age}살이며, {color}색을 좋아해요.'.format(age = 20, color = '빨간'))
+
+# # 방법 4
+# age = 20
+# color = '빨간'
+# print(f'나는 {age}살이며, {color}색을 좋아해요.')
+
+# print('백문이 불여일견 \n백견이 불여일타')
+
+# print('저는 \'나도코딩\'입니다.')
+
+# print('D:\\Dev\\pythonWorkspace')
+
+# # \r : 커서를 맨 앞으로 이동(맨 앞의 문자를 대체)
+# print('Red Pine Apple\rBig') # BigPine Apple 출력(스페이스바 기준 문자 슬라이스)
+
+# # \b : 백스페이스(한 글자 삭제)
+# print("Redd\bApple")
+
+# # \t : 탭
+# print('Red\tApple')
+
+# 내 풀이
+
+# site = 'http://daum.com'
+# site = site.replace('http://', '')
+# site = site.replace(site[site.find('.'):], '')
+# password = site[:3] + str(len(site)) + str(site.count('e')) + '!'
+# print(password)
+
+# 해설
+
+url = 'http://naver.com'
+myStr = url.replace('http://', '')
+myStr = myStr[:myStr.index('.')]
+password = myStr[:3] + str(len(myStr)) + str(myStr.count('e')) + '!'
