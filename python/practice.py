@@ -204,3 +204,4 @@ url = 'http://naver.com'
 myStr = url.replace('http://', '')
 myStr = myStr[:myStr.index('.')]
 password = myStr[:3] + str(len(myStr)) + str(myStr.count('e')) + '!'
+print(password)
