@@ -200,8 +200,81 @@
 
 # 해설
 
-url = 'http://naver.com'
-myStr = url.replace('http://', '')
-myStr = myStr[:myStr.index('.')]
-password = myStr[:3] + str(len(myStr)) + str(myStr.count('e')) + '!'
-print(password)
+# url = 'http://naver.com'
+# myStr = url.replace('http://', '')
+# myStr = myStr[:myStr.index('.')]
+# password = myStr[:3] + str(len(myStr)) + str(myStr.count('e')) + '!'
+# print('{} 의 비밀번호는 {} 입니다.'.format(url, password))
+
+# 리스트
+
+# subway = ['유재석', '조세호', '박명수']
+# print(subway)
+
+# print(subway.index('조세호'))
+
+# subway.append('하하')
+# print(subway)
+
+# subway.insert(1, '정형돈')
+# print(subway)
+
+# # 제일 뒷값 빼기
+# print(subway.pop())
+# print(subway)
+
+# subway.append('유재석')
+# print(subway.count('유재석'))
+
+# numList = [5,2,4,3,1]
+# numList.sort()
+# print(numList)
+# numList.reverse()
+# print(numList)
+
+# numList.clear()
+# print(numList)
+
+# mixList = ['조세호', 20, True]
+# print(mixList)
+# numList = [1,2,3,4,5]
+# numList.extend(mixList)
+# print(numList)
+
+# cabinet = {3:'유재석', 100: '김태호'}
+# print(cabinet[3])
+# print(cabinet[100])
+
+# print(cabinet.get(3))
+# # print(cabinet[5]) # 에러 뜸
+# print(cabinet.get(5, '사용 가능')) # 원래 none인데 뒤에 값 넣으면 대체 값 줌
+# print('hi')
+
+# print(3 in cabinet) # True
+# print(5 in cabinet) # False
+
+cabinet = {'A-3' : '유재석', 'B-100' : '김태호'} # 키 값이 int가 아니어도 됨
+print(cabinet['A-3'])
+print(cabinet['B-100'])
+
+# 추가 하는 법
+cabinet['C-20'] = '조세호' # 키 값 unique시 아무 일 없이 추가
+cabinet['A-3'] = '김종국' # 키 값이 이미 있을 시 덮어싀움('유재석'이 지워지고 그 자리에 '김종국'이 추가)
+
+print(cabinet)
+
+# 삭제 하는 법
+del cabinet['A-3']
+print(cabinet)
+
+# key 값만 출력
+print(cabinet.keys())
+
+# value 값만 출력
+print(cabinet.values())
+
+# key, value 쌍으로 출력
+print(cabinet.items())
+
+cabinet.clear()
+print(cabinet)
