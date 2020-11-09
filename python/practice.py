@@ -253,28 +253,28 @@
 # print(3 in cabinet) # True
 # print(5 in cabinet) # False
 
-cabinet = {'A-3' : '유재석', 'B-100' : '김태호'} # 키 값이 int가 아니어도 됨
-print(cabinet['A-3'])
-print(cabinet['B-100'])
+# cabinet = {'A-3' : '유재석', 'B-100' : '김태호'} # 키 값이 int가 아니어도 됨
+# print(cabinet['A-3'])
+# print(cabinet['B-100'])
 
-# 추가 하는 법
-cabinet['C-20'] = '조세호' # 키 값 unique시 아무 일 없이 추가
-cabinet['A-3'] = '김종국' # 키 값이 이미 있을 시 덮어싀움('유재석'이 지워지고 그 자리에 '김종국'이 추가)
+# # 추가 하는 법
+# cabinet['C-20'] = '조세호' # 키 값 unique시 아무 일 없이 추가
+# cabinet['A-3'] = '김종국' # 키 값이 이미 있을 시 덮어싀움('유재석'이 지워지고 그 자리에 '김종국'이 추가)
 
-print(cabinet)
+# print(cabinet)
 
-# 삭제 하는 법
-del cabinet['A-3']
-print(cabinet)
+# # 삭제 하는 법
+# del cabinet['A-3']
+# print(cabinet)
 
-# key 값만 출력
-print(cabinet.keys())
+# # key 값만 출력
+# print(cabinet.keys())
 
-# value 값만 출력
-print(cabinet.values())
+# # value 값만 출력
+# print(cabinet.values())
 
-# key, value 쌍으로 출력
-print(cabinet.items())
+# # key, value 쌍으로 출력
+# print(cabinet.items())
 
-cabinet.clear()
-print(cabinet)
+# cabinet.clear()
+# print(cabinet)
