@@ -278,3 +278,43 @@
 
 # cabinet.clear()
 # print(cabinet)
+
+# menu = ('돈까스', '치즈까스')
+# print(menu[0])
+# print(menu[1])
+
+# # menu.add('생선까스') # 에러(튜플은 생성 후 변경 불가)
+
+# # name ='김종국'
+# # age = 20
+# # hobby = '코딩'
+# # print(name, age, hobby)
+
+# (name, age, hobby) = ('김종국', 20, '코딩')
+# print(name, age, hobby)
+
+# # 집합(set)
+# # 중복 안됨, 순서 없음
+# mySet = {1,2,3,3,3}
+# print(mySet)
+
+# java = {'유재석', '김태호', '양세형'}
+# python = set(['유재석', '박명수'])
+
+# # 교집합
+# print(java & python) # 교집합(java와 python 둘 다에 있는 값을 이끌어냄)
+# print(java.intersection(python)) # 위에 것과 동일한 결과
+
+# # 합집합
+# print(java | python)
+# print(java.union(python))
+
+# # 차집합
+# print(java - python)
+# print(java.difference(python))
+
+# python.add('김태호')
+# print(python)
+
+# python.remove('김태호')
+# print(python)
