@@ -415,3 +415,55 @@
 #     print('{0}, 커피가 준비 되었습니다.'.format(customer))
 #     person = input('이름이 어떻게 되세요?')
     
+# continue & break
+
+# absent = [2, 5] # 결석
+# noBook = [7] # 책을 깜빡했음
+# for student in range(1, 11):
+#     if student in absent: # 개중요(개편함)
+#         continue
+#     elif student in noBook:
+#         print('오늘 수업 여기까지, {}는 교무실로 따라와'.format(student))
+#         break
+#     print('{0}, 책을 읽어봐'.format(student))
+
+# students = list(range(1,6))
+# print(students)
+# students = [i + 100 for i in students]
+# print(students)
+
+# students = ['Iron man', 'Thor', 'I am groot']
+# students = [len(i) for i in students]
+# print(students)
+
+# students = ['Iron man', 'Thor', 'I am groot']
+# students = [i.upper() for i in students]
+# print(students)
+
+# import random
+
+# customers = 0
+# ok = ''
+# randTime = 0
+# for time in range(1,51):
+#     randTime = random.randint(5, 50)
+#     if randTime < 16:
+#         ok = 'O'
+#         customers += 1
+#     else:
+#         ok = ' '        
+#     print('[{}] {}번째 손님 (소요시간 : {}분)'.format(ok, time, randTime))
+
+# print('총 탑승 승객 : {} 분'.format(customers))
+
+from random import *
+cnt = 0
+for i in range (1,51):
+    time = randrange(5,51)
+    if 5 <= time <=15:
+        print('[O] {}번째 손님 (소요시간 : {}분)'.format(i, time))
+        cnt += 1
+    else:
+        print('[ ] {}번째 손님 (소요시간 : {}분)'.format(i, time))
+
+print('총 탑승 승객 수 : {} 분'.format(cnt))
