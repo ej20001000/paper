@@ -56,4 +56,63 @@ int main(){
 11. DDL에서 데이터베이스 오브젝트 변경하는 명령어는?
     - ALTER
 
-12.
+12. int NumCompare(int a, int b);
+
+int main(){
+    printf("%d",
+      NumCompare(20,10) + NumCompare(38,20));
+      return 0;
+}
+
+int NumCompare(int a, int b){
+    if(a>b)
+        return a;
+    else
+        return b;
+}
+    - 58
+
+13. TCP/IP 전송계층
+    application
+    ( )
+    internet
+    network
+    - Transport(전송)
+
+14. GROUP BY, WHERE, HAVING 실행 순서
+    - WHERE, GROUP BY, HAVING
+    ** SQL 문법 순서: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+       SQL 실행 순서: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY **
+
+15. CLI 말고 아이콘 활용, 마우스 이용
+    - GUI
+
+18. xml이 무거워서 대체하는 기술, 자바스크립트 개방형 표준 포맷
+    - JSON
+    ** XML(EXtensible Markup Language): HTML과 비슷한 문자 기반의 마크업 언어, XML은 HTML처럼 데이터를 보여주는 목적이 아닌, 데이터를 저장하고 전달할 목적으로만 만들어짐
+       JSON: 종료 태그 사용 x, 구문이 더 짧음, 배열 사용 o **
+
+19. 해당 테이블이 있는데
+CREATE TABLE TABLENAME(
+    주민번호 NUMBER(5);
+);
+
+삼입하는 순간 에러가 발생했다.
+INSERT INTO NUMBER(200614);
+
+DDL을 이용해서 변경하시오.
+ALTER TABLENAME ( ) 주민번호 NUMBER(6)
+    -MODIFY
+    ** ALTER
+       ADD: 컬럼 추가
+       DROP COLUMN: 컬럼 삭제
+       MODIFY: 컬럼 수정
+       RENAME COLUMN: 컬럼명 수정
+       ADD CONSTRAINT: 제약조건 추가
+       DROP CONSTRAINT: 제약조건 삭제 **
+
+20. voidmain(){
+    int x=4;
+    printf("%d", x++);
+}
+    - 4
