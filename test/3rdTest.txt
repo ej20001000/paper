@@ -1,0 +1,23 @@
+1. 5를 입력 받았을 때 프로그램의 결과를 쓰시오.
+
+int main(){
+    int num;
+    scanf("%d",&num);
+
+    switch(num){
+        case 1:
+            printf("1을 입력\n");
+            break;
+        case 2:
+            printf("2을 입력\n");
+            break;
+        case 3:
+            printf("3을 입력\n");
+            break;
+        default:
+            printf("선택불가\n");
+            break;
+    }
+}
+
+    - 선택불가
