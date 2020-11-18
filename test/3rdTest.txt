@@ -19,5 +19,28 @@ int main(){
             break;
     }
 }
-
     - 선택불가
+
+2. class hrdKorea{
+    public static void main(String[] args){
+        int a=9;
+        int b=11;
+        int c=a^b;
+
+        System.out.println(c);
+    }
+}
+    - 2
+    ** ^: XOR, 숫자는 2진수로 변환 후 비교
+    9(2진수): 1001  11(2진수): 1011
+    9^11 = 0010(2진수) = 2(10진수) **
+
+3. 속성을 추가
+alter table 테이블명 ( ) 주소 char(30);
+    - add
+
+4. 다음 빈칸에 들어갈 용어를 쓰시오.
+
+데이터베이스: test00
+
+student 테이블
