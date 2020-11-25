@@ -115,4 +115,4 @@ ALTER TABLENAME ( ) 주민번호 NUMBER(6)
     int x=4;
     printf("%d", x++);
 }
-    - 4
+    - 4 
