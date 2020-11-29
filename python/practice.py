@@ -456,14 +456,34 @@
 
 # print('총 탑승 승객 : {} 분'.format(customers))
 
-from random import *
-cnt = 0
-for i in range (1,51):
-    time = randrange(5,51)
-    if 5 <= time <=15:
-        print('[O] {}번째 손님 (소요시간 : {}분)'.format(i, time))
-        cnt += 1
-    else:
-        print('[ ] {}번째 손님 (소요시간 : {}분)'.format(i, time))
+# from random import *
+# cnt = 0
+# for i in range (1,51):
+#     time = randrange(5,51)
+#     if 5 <= time <=15:
+#         print('[O] {}번째 손님 (소요시간 : {}분)'.format(i, time))
+#         cnt += 1
+#     else:
+#         print('[ ] {}번째 손님 (소요시간 : {}분)'.format(i, time))
 
-print('총 탑승 승객 수 : {} 분'.format(cnt))
+# print('총 탑승 승객 수 : {} 분'.format(cnt))
+
+# 함수
+
+def openAccount():
+    print("새로운 계좌가 생성되었습니다.")
+
+def deposit(balance, money):
+    print('입금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance+money))
+    return balance + money
+
+def withdraw(balance, money):
+    if balance >= money:
+        print('출금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance-money))
+    else:
+        print('출금이 완료되지 않았습니다. 잔액은 {} 원입니다.'.format(balance))
+
+balance = 0
+balance = deposit(balance, 1000)
+
+withdraw(balance, 500)
