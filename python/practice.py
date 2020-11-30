@@ -486,4 +486,4 @@ def withdraw(balance, money):
 balance = 0
 balance = deposit(balance, 1000)
 
-withdraw(balance, 500)
+# withdraw(balance, 500)
