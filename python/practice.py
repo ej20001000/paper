@@ -470,20 +470,65 @@
 
 # 함수
 
-def openAccount():
-    print("새로운 계좌가 생성되었습니다.")
+# def openAccount():
+#     print("새로운 계좌가 생성되었습니다.")
 
-def deposit(balance, money):
-    print('입금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance+money))
-    return balance + money
+# def deposit(balance, money):
+#     print('입금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance+money))
+#     return balance + money
 
-def withdraw(balance, money):
-    if balance >= money:
-        print('출금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance-money))
-    else:
-        print('출금이 완료되지 않았습니다. 잔액은 {} 원입니다.'.format(balance))
+# def withdraw(balance, money):
+#     if balance >= money:
+#         print('출금이 완료되었습니다. 잔액은 {} 원입니다.'.format(balance-money))
+#     else:
+#         print('출금이 완료되지 않았습니다. 잔액은 {} 원입니다.'.format(balance))
 
-balance = 0
-balance = deposit(balance, 1000)
+# def withdraw_night(balance, money):
+#     commission = 100
+#     return commission, balance - money - commission
 
-# withdraw(balance, 500)
+# balance = 0
+# balance = deposit(balance, 1000)
+
+# # withdraw(balance, 500)
+
+# commission, balance = withdraw_night(balance, 500)
+# print('수수료 {} 원이며, 잔액은 {}원 입니다.'.format(commission, balance))
+
+# 기본값
+# def profile(name, age=17, mainLang='파이썬'):
+#     print('이름: {}\t나이: {}\t주 사용 언어: {}'.format(name, age, mainLang))
+
+# profile(name = '유재석', mainLang = '파이썬', age = 20)
+# profile(mainLang = '자바', name = '김태호', age = 17)
+
+# 가변인자
+# def profile(name, age, *language):
+#     print('이름: {}\t나이: {}\t'.format(name, age), end = ' ')
+#     for lang in language:
+#         print(lang, end = ' ')
+#     print()
+
+# profile('유재석', 20, 'Python', 'Java', 'C', 'C++', 'C#')
+# profile('김태호', 25, 'Kotlin', 'Swift')
+
+# 지역변수와 전역변수
+# gun = 10
+
+# def checkpoint(soldiers):
+#     global gun
+#     gun = gun - soldiers
+#     print('[함수 내] 남은 총 : {}'.format(gun))
+
+# def checkpointRet(gun, soldiers):
+#     gun = gun - soldiers
+#     print('[함수 내] 남은 총 : {}'.format(gun))
+#     return gun
+
+# print('전체 총 : {}'.format(gun))
+# gun = checkpointRet(gun, 2)
+# print('남은 총 : {}'.format(gun))
+
+# 퀴즈 #6
+# 표준 체중
+
