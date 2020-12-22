@@ -653,3 +653,30 @@
 # profile = pickle.load(profileFile) # file에 있는 정보를 profile에 불러오기
 # print(profile)
 # profileFile.close()
+
+# with
+# import pickle
+
+# with open('profile.pickle', 'rb') as profileFile:
+#     print(pickle.load(profileFile))
+
+# with open('study.txt', 'w', encoding='utf8') as studyFile:
+#     studyFile.write('파이썬을 열심히 공부하고 있어요')
+
+# with open('study.txt', 'r', encoding='utf8') as studyFile:
+#     print(studyFile.read())
+
+# 퀴즈7
+# for i in range(1,11):
+#     with open('quiz7/'+str(i)+'주차.txt', 'w', encoding='utf8') as weeklyFile:
+#         weeklyFile.write(''' - {} 주차 주간 보고 -
+#         부서 : 
+#         이름 :
+#         업무 요약 :'''.format(i))
+
+# for i in range(1,51):
+#     with open(str(i)+'주차.txt','w',encoding='utf8') as reportFile:
+#         reportFile.write(''' - {} 주차 주간 보고 -
+# #         부서 : 
+# #         이름 :
+# #         업무 요약 :'''.format(i))
