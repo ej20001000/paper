@@ -704,22 +704,17 @@
 # attack(name, '1시', damage)
 # attack(tankName, '1시', tankDamage)
 
+# 일반 유닛
 class Unit:
-    def __init__(self, name, hp, damage): # __init__ : 생성자
+    def __init__(self, name, hp, speed): # __init__ : 생성자
         self.name=name
         self.hp=hp
-        self.damage=damage
-        print('{} 유닛이 생성 되었습니다.'.format(self.name))
-        print('체력 {}, 공격력 {}'.format(self.hp, self.damage))
+        self.speed = speed
+        print('{} 유닛이 생성되었습니다.'.format(name))
 
-class AttackUnit:
-    def __init__(self, name, hp, damage): # __init__ : 생성자
-        self.name=name
-        self.hp=hp
-        self.damage=damage
-
-    def attack(self, location):
-        print('{} : {} 방향으로 적군을 공격 합니다. [공격력 {}]'.format(self.name, location, self.damage))
+    def move(self, location):
+        print('[지상 유닛 이동]')
+        print('{} : {} 방향으로 이동합니다. [속도 {}]'.format(self.name, location, self.speed))
 
     def damaged(self, damage):
         print('{} : {} 데미지를 입었습니다.'.format(self.name, damage))
@@ -728,25 +723,80 @@ class AttackUnit:
         if self.hp <= 0:
             print('{} : 파괴되었습니다.'.format(self.name))
 
-# 파이어뱃 : 공격 유닛, 화염방사기.
-firebat1 = AttackUnit('파이어뱃', 50, 16)           
-firebat1.attack('5시')
+# 공격 유닛
+class AttackUnit(Unit):
+    def __init__(self, name, hp, speed, damage): # __init__ : 생성자
+        Unit.__init__(self, name, hp, speed)
+        self.damage = damage
 
-# 공격 2번 받는다고 가정
-firebat1.damaged(25)
-firebat1.damaged(25)
+    def attack(self, location):
+        print('{} : {} 방향으로 적군을 공격 합니다. [공격력 {}]'.format(self.name, location, self.damage))
 
-# # marine1 = Unit('마린', 40, 5)
-# # marine2 = Unit('마린', 40, 5)
-# # tank = Unit('탱크', 150, 35)
+# 마린
+class Marine(AttackUnit):
+    def __init__(self):
+        AttackUnit.__init__(self, '마린', 40, 1, 5)
 
-# # 레이스 : 공중 유닛, 비행기. 클로킹 (상대방에게 보이지 않음)
-# wraith1 = Unit('레이스', 80, 5)
-# print('유닛 이름 : {}, 공격력 : {}'.format(wraith1.name, wraith1.damage))
+    # 스팀팩 : 일정 시간 동안 이동 및 공격 속도를 등가, 체력 10 감소
+    def stimpack(self):
+        if self.hp > 10:
+            self.hp -= 10
+            print('{} : 스팀팩을 사용합니다. (HP 10 감소)'.format(self.name))
+        else:
+            print('{} : 체력이 부족하여 스팀팩을 사용하지 않습니다.'.format(self.name))
 
-# # 마인드 컨트롤 : 상대방 유닛을 내것으로 만드는 것 (빼앗음)
-# wraith2 = Unit('빼앗은 레이스', 80, 5)
-# wraith2.clocking = True
+# 탱크
+class Tank(AttackUnit):
+    # 시즈모드 : 탱크를 지상에 고정시켜, 더 높은 파워로 공격 가능. 이동 불가.
+    seizeDeveloped = False # 시즈모드 개발여부
 
-# if wraith2.clocking == True:
-#     print('{} 는 현재 클로킹 상태입니다.'.format(wraith2.name))
+    def __init__(self):
+       AttackUnit.__init__(self, '탱크', 150, 1, 35)
+       self.seizeMode = False
+
+    def setSeizeMode(self):
+        if Tank.seizeDeveloped == False:
+            return
+        
+        # 현재 시즈모드가 아닐 때 -> 시즈모드
+        if self.seizeMode == False:
+            print('{} : 시즈모드로 전환합니다.'.format(self.name))
+            self.damage *= 2
+            self.seizeMode = True
+        # 현재 시즈모드일 때 -> 시즈모드 해제
+        else:
+            print('{} : 시즈모드를 해제합니다.'.format(self.name))
+            self.damage /=2
+            self.seizeMode = False
+
+# 날 수 있는 기능을 가진 클래스
+class Flyable:
+    def __init__(self, flyingSpeed):
+        self.flyingSpeed = flyingSpeed
+
+    def fly(self, name, location):
+        print('{} : {} 방향으로 날아갑니다. [속도 {}]'.format (name, location, self.flyingSpeed))
+
+# 공중 공격 유닛 클래스
+class FlyableAttackUnit(AttackUnit, Flyable):
+    def __init__(self, name, hp, damage, flyingSpeed):
+        AttackUnit.__init__(self, name, hp, 0, damage) # 지상 speed 0
+        Flyable.__init__(self, flyingSpeed)
+
+    def move(self, location):
+        print('[공중 유닛 이동]')
+        self.fly(self.name, location)
+
+# 레이스
+class Wraith(FlyableAttackUnit):
+    def __init__(self):
+        FlyableAttackUnit.__init__('레이스', 80, 20, 5)
+        self.cloaked = False # 클로킹 모드 (해제 상태)
+    
+    def cloaking(self):
+        if self.cloaked == True: # 클로킹 모드 -> 모드 해제
+            print('{} : 클로킹 모드 해제합니다.'.format(self.name))
+            self.cloaked = False
+        else: # 클로킹 모드 해제 -> 모드 설정
+            print('{} : 클로킹 모드 설정합니다.'.format(self.name))
+            self.cloaked = True
