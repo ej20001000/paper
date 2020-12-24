@@ -704,6 +704,8 @@
 # attack(name, '1시', damage)
 # attack(tankName, '1시', tankDamage)
 
+from random import *
+
 # 일반 유닛
 class Unit:
     def __init__(self, name, hp, speed): # __init__ : 생성자
@@ -713,7 +715,6 @@ class Unit:
         print('{} 유닛이 생성되었습니다.'.format(name))
 
     def move(self, location):
-        print('[지상 유닛 이동]')
         print('{} : {} 방향으로 이동합니다. [속도 {}]'.format(self.name, location, self.speed))
 
     def damaged(self, damage):
@@ -784,13 +785,12 @@ class FlyableAttackUnit(AttackUnit, Flyable):
         Flyable.__init__(self, flyingSpeed)
 
     def move(self, location):
-        print('[공중 유닛 이동]')
         self.fly(self.name, location)
 
 # 레이스
 class Wraith(FlyableAttackUnit):
     def __init__(self):
-        FlyableAttackUnit.__init__('레이스', 80, 20, 5)
+        FlyableAttackUnit.__init__(self, '레이스', 80, 20, 5)
         self.cloaked = False # 클로킹 모드 (해제 상태)
     
     def cloaking(self):
@@ -800,3 +800,62 @@ class Wraith(FlyableAttackUnit):
         else: # 클로킹 모드 해제 -> 모드 설정
             print('{} : 클로킹 모드 설정합니다.'.format(self.name))
             self.cloaked = True
+
+def gameStart():
+    print('[알림] 새로운 게임을 시작합니다.')
+
+def gameOver():
+    print('Player : gg') # good game
+    print('[Player] 님이 게임에서 퇴장하셨습니다.')
+
+# 실제 게임 진행
+gameStart()
+
+# 마린 3기 생성
+m1 = Marine()
+m2 = Marine()
+m3 = Marine()
+
+# 탱크 2기 생성
+t1 = Tank()
+t2 = Tank()
+
+# 레이스 1기 생성
+w1 = Wraith()
+
+# 유닛 일괄 관리 (생성된 모든 유닛 append)
+attackUnits = []
+attackUnits.append(m1)
+attackUnits.append(m2)
+attackUnits.append(m3)
+attackUnits.append(t1)
+attackUnits.append(t2)
+attackUnits.append(w1)
+
+# 전군 이동
+for unit in attackUnits:
+    unit.move('1시')
+
+# 탱크 시즈 모드 개발
+Tank.seizeDeveloped = True
+print('[알림] 탱크 시즈 모드 개발이 완료되었습니다.')
+
+# 공격 모드 준비 (마린 : 스팀팩, 탱크 : 시즈 모드, 레이스: 클로킹)
+for unit in attackUnits:
+    if isinstance(unit, Marine):
+        unit.stimpack()
+    elif isinstance(unit, Tank):
+        unit.setSeizeMode()
+    elif isinstance(unit, Wraith):
+        unit.cloaking()
+
+# 전군 공격
+for unit in attackUnits:
+    unit.attack('1시')
+
+# 전군 피해
+for unit in attackUnits:
+    unit.damaged(randint(5, 20)) # 공격은 랜덤으로 받음(5 ~ 20)
+
+# 게임 종료
+gameOver()
