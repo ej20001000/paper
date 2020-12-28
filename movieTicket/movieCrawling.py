@@ -5,7 +5,7 @@ import datetime
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-bot = telegram.Bot(token = '1419222931:AAEfY2omQDJudTDnIEP8kRJ8TxSCl-_4oS4')
+bot = telegram.Bot(token = '')
 url = 'http://www.cgv.co.kr/common/showtimes/iframeTheater.aspx?areacode=01&theatercode=0013&date=20201230'
 
 def jobFunction():
@@ -19,7 +19,7 @@ def jobFunction():
         title = imax.select_one('div.info-movie > a > strong').text.strip()
         bot.sendMessage(chat_id = 1491640870, text = title + ' IMAX 예매가 열렸습니다.')
     else:
-        bot.sendMessage(chat_id = 1491640870, text = 'IMAX 예매가 아직 열리지 않았습니다.')
+        bot.sendMessage(chat_id = , text = 'IMAX 예매가 아직 열리지 않았습니다.')
 
 sched = BlockingScheduler()
 sched.add_job(jobFunction, 'interval', seconds = 30)
