@@ -23,3 +23,8 @@
 h2 {
     display: inline;
 }
+
+.start {
+    background-image: url('play.jpg');
+    background-size: cover;
+}
