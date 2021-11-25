@@ -17,6 +17,7 @@ selfNum()
 
 
 # def answer():
+      # 셋은 중복 숫자를 자동으로 없애줌, 셋은 순서가 없음
 #     naturalNum = set(range(1, 10001))
 #     generatedNum = set()
 
@@ -24,7 +25,7 @@ selfNum()
 #         for j in str(i):
 #             i += int(j)
 #         generatedNum.add(i)
-    
+      # sorted 함수는 list 타입으로 안됨
 #     selfNum = sorted(naturalNum - generatedNum)
 #     for i in selfNum:
 #         print(i)
