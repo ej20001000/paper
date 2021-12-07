@@ -1,27 +1,14 @@
-a = int(input())
-x = 1
-y = 1
-i = 0
+inputNum = int(input())
+maxNum = 0 # 라인 내 가장 큰 숫자
+line = 0
 
-while i < a - 1:
-    if x == 1 and y ==1 :
-        y += 1
-        i += 1
-    elif x == 1 and y % 2 != 0:
-        y += 1
-        i += 1
-    elif x == 1 and y % 2 == 0:
-        while y != 1 and i < a - 1:
-            x += 1
-            y -= 1
-            i += 1
-    elif y == 1 and x % 2 == 0:
-        x += 1
-        i += 1
-    elif y == 1 and x % 2 != 0:
-        while x != 1 and i < a -1:
-            x -= 1
-            y += 1
-            i += 1
-    
-print('{}/{}'.format(x, y))
+while inputNum > maxNum:
+    line += 1
+    maxNum += line
+
+gap = maxNum - inputNum
+
+if line % 2 == 1:
+    print('{}/{}'.format(1 + gap, line - gap))
+else:
+    print('{1}/{0}'.format(1 + gap, line - gap))
