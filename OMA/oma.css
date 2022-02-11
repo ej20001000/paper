@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    width: 495px;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-gap: 15px; */
+    grid-auto-rows: minmax(160px, auto);
+}
+
+.brown {
+    background-color: rgb(197, 141, 67);
+}
+
+.maroon {
+    background-color: maroon;
+}
+
+.omaButton {
+    background-color: black;
+    margin-top: 50px;    
+}
+
+.o {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: block;
+    padding: 50px;
+    margin: 17px;
+}
+
+.a {
+    width: 0; 
+    height: 0; 
+    border-left: 65px solid transparent;
+    border-right: 65px solid transparent;
+    display: block;
+    margin: 15px auto;
+}
+
+.w {
+    background-color: white;
+}
