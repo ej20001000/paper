@@ -26,12 +26,13 @@ function putOma() {
         span.className = whichOma;
 
         if(whichColor == 'w'){
-            span.style.borderBottom ='120px solid white';
+            span.style.borderBottom ='115px solid white';
         } else{
-            span.style.borderBottom ='120px solid black';
+            span.style.borderBottom ='115px solid black';
         } 
             
     } else{
+        span.style.borderBottom = null;
         //보드에 클래스값 추가
         span.className = whichColor + ' ' + whichOma;
     }
