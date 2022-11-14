@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch paper1",
+            "request": "launch",
+            "mainClass": "paper1",
+            "projectName": "paper_510c7405"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
