@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Baekjoon4101",
+            "request": "launch",
+            "mainClass": "javaAlgorithmStudy.Baekjoon4101",
+            "projectName": "paper_95d807a0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Baekjoon1000",
+            "request": "launch",
+            "mainClass": "javaAlgorithmStudy.Baekjoon1000",
+            "projectName": "paper_95d807a0"
+        },
+        {
+            "type": "java",
             "name": "Launch paper1",
             "request": "launch",
             "mainClass": "paper1",
