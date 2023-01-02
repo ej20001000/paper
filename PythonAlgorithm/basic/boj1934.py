@@ -11,4 +11,3 @@ def cal(a, b):
 for _ in range(int(input())):
     a, b = map(int, input().split())
     cal(a, b)
-
