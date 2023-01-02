@@ -11,4 +11,4 @@ while i < n:
         i = 2
     else: i += 1
 
-print(n)
+if n != 1: print(n)
