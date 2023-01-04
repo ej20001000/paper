@@ -1,3 +1,5 @@
+# 주사위 세개
+
 x, y, z = map(int, input().split())
 
 def printAns(ini, mid, x):
