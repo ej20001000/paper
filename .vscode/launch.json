@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Baekjoon4101",
+            "request": "launch",
+            "mainClass": "javaAlgorithmStudy.Baekjoon4101",
+            "projectName": "paper_95d807a0"
+        },
+        {
+            "type": "java",
+            "name": "Launch Baekjoon1000",
+            "request": "launch",
+            "mainClass": "javaAlgorithmStudy.Baekjoon1000",
+            "projectName": "paper_95d807a0"
+        },
+        {
+            "type": "java",
+            "name": "Launch paper1",
+            "request": "launch",
+            "mainClass": "paper1",
+            "projectName": "paper_510c7405"
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
