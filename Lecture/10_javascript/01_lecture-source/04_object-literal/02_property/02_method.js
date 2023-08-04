@@ -1,0 +1,8 @@
+var dog = {
+    name : "뽀삐",
+    eat : function(food) {
+        console.log(`${this.name}(은)는 ${food}를 맛있게 먹어요. 냠냠`);
+    }
+};
+
+dog.eat('츄르');
