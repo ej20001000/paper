@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useId</title>
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. id를 이용한 요소노드 취득</h1>
+    <pre>
+        <b>
+            Document.prototype.getElementById 메소드는 인자로 전달한 id attribute 값을 갖는 하나의 요소 노드를 탐색하여 반환한다.
+            문서 내에 중복된 id값을 갖는 HTML 요소가 여러개 존재하더라도 에러가 발생하지는 않지만,
+            해당 id값을 갖는 첫번째 요소 노드만 반환한다
+            
+            pre 태그 개좋네
+
+
+            이걸 다 알아차린다고?                 레게노
+
+        </b>
+    </pre>
+    <div id="area1" class="area">
+        div 영역
+        <p id="area2">p 영역</p>
+    </div>
+    <div id="area1" class="area">
+        div 영역
+    </div>
+
+    <script>
+        const $elem = document.getElementById('area1');
+        console.log($elem);
+
+        $elem.style.backgroundColor = 'skyblue';
+
+        area2.style.backgroundColor = 'blue';
+        
+        const $noElem = document.getElementById('area3');
+        console.log($noElem);
+    </script>
+</body>
+</html>

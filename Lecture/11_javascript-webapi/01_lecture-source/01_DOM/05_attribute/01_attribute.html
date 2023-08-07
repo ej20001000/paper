@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. 어트리뷰트</h1>
+    <pre>
+        Element.prototype.attributes 프로퍼티로 모든 어트리뷰트 노드를 취득할 수 있다.
+        attributes 프로퍼티는 getter만 존재하는 읽기 전용 접근자 프로퍼티로
+        NameNodeMap 객체를 반환한다
+    </pre>
+    <label for="username">유저명</label>
+    <input type="text" id="username" value="user01">
+    <script>
+        // const attributes = document.getElementById('username').attributes;
+        // 비구조화할당, 구조분해할당
+        const { attributes } = document.getElementById('username');
+        console.log(attributes);
+
+        console.log(attributes.value.value);
+        console.log(attributes.id.value);
+    </script>
+</body>
+</html>
