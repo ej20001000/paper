@@ -1,13 +1,15 @@
 def solution(players, callings):
     
-    for calling, player in zip(callings, players):
-        if calling in players:
-            PIndex = players.index(calling)
-            tmpFrontP = players[PIndex - 1]
-            players[PIndex - 1] = calling
-            players[PIndex] = tmpFrontP
+    players_dict = {player:i for i, player in enumerate(players)};
+    rank_dict = {i:player for i, player in enumerate(players)};
+
+    for calling in callings:
+        rank =  players_dict[calling]
+
+        players_dict[rank_dict[rank - 1]], players_dict[rank_dict[rank]] = players_dict[rank_dict[rank]], players_dict[rank_dict[rank - 1]]
+        rank_dict[rank - 1], rank_dict[rank] = rank_dict[rank], rank_dict[rank - 1]
     
-    return players
+    return list(rank_dict.values())
 
 players = ["mumu", "soe", "poe", "kai", "mine"]
 callings = ["kai", "kai", "mine", "mine"]
