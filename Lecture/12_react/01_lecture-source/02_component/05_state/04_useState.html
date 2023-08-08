@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        
+        const {useState} = React;
+        
+        function Say() {
+
+            const [message, setMessage] = useState('기본상태');
+            const [color, setColor] = useState('black');
+            const [backgroundColor, setBackgroundColor] = useState('white');
+
+            const onClickEnter = () => setMessage('안녕하세요');
+            const onClickLeave = () => setMessage('안녕히가세요');
+
+            return (
+                <>
+                    <h1 style={{color, backgroundColor}}>{message}</h1>
+                    <div>
+                        <button onClick={onClickEnter}>입장</button>    
+                        <button onClick={onClickLeave}>퇴장</button>    
+                    </div>
+                    <div>
+                        <button onClick={() => setColor('red')}>빨간색</button>    
+                        <button onClick={() => setColor('purple')}>보라색</button>    
+                        <button onClick={() => setColor('green')}>초록색</button>    
+                    </div>
+                    <div>
+                        <button onClick={ () => setBackgroundColor('white')}>기본 배경</button>    
+                        <button onClick={ () => setBackgroundColor('black')}>반전 배경</button>    
+                    </div>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Say/>);
+    </script>
+</body>
+</html>

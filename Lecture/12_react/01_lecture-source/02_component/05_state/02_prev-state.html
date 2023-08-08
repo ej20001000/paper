@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Counter extends React.Component {
+            state = {
+                number: 0
+            }
+
+            render() {
+                const { number } = this.state
+                return (
+                    <>
+                        <h1
+                            style={ (number < 0)? {color: 'red'}: {color: 'blue'}}
+                        >Count : {number}
+                        </h1>
+                        <button onClick={ () => this.setState({number: number - 1})}>-1</button>
+                        <button 
+                            onClick={ 
+                                () => {
+                                    this.setState(
+                                        (prevState, props) => {
+                                            return {
+                                                number: prevState.number + 1
+                                            };
+                                        }
+                                    );
+                                    this.setState(
+                                        (prevState, props) => {
+                                            return {
+                                                number: prevState.number + 1
+                                            };
+                                        }
+                                    );
+                                }
+                            }
+                        >
+                            +1
+                        </button>
+                    </>
+                );
+            }
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>

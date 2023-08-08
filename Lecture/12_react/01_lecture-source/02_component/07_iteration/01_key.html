@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Items() {
+            console.log(names);
+            return (
+                <>
+                    <ul>
+                        { names.map((name, index) => <li key={index}>{name}</li>) }    
+                    </ul>
+                </>
+            );
+        }
+
+        const names = ['홍길동', '유관순', '윤봉길', '이순신', '임꺽정'];
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Items names={names}/>
+        );
+    </script>
+</body>
+</html>

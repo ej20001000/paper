@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        .header {
+            padding: 10px;
+            text-align: center;
+            background: black;
+            color: white;
+            font-size: 15px;
+        }
+        .contentDiv {
+            text-align: center;
+            margin: auto;
+            box-sizing: content-box;
+            width: 30%;
+            height: 60%;
+            border: solid black 3px;
+            padding: 5px;
+        }
+        .middle {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState} = React;
+
+        function TodoList() {
+
+            const[list, setList] = useState([
+                {
+                    id: 1,
+                    content: "할일 목록을 추가할 것",
+                    checked: false
+                }
+            ]);
+
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(2);
+
+            const onChangeHandler = e => setInputText(e.target.value);
+            const onClickAdd = () => {
+                const changeList = list.concat({
+                    id: nextId,
+                    content: inputText,
+                    checked: false
+                });
+                setNextId(nextId + 1);
+                setList(changeList);
+                setInputText('');
+            }
+            const onRemove = id => {
+                const changeList = list.filter(x => x.id !== id);
+                setList(changeList);
+            }
+
+            const updateCheck = (id, check) => {
+                const updatedList = [...list];
+                const idx = list.findIndex(x => x.id === id);
+
+                updatedList[idx] = {
+                    ...updatedList[idx],
+                    checked: !check
+                };
+
+                setList(updatedList);
+
+            }
+
+            const showList = list.map(x => <li key={x.id}><input type="checkbox" onChange={() => updateCheck(x.id, x.checked)}/><span style={{ textDecoration: x.checked ? 'line-through' : ''}}>{x.content}</span><img src="x.png" style={{width: 15, height: 15, marginLeft: 10}} onClick={() => onRemove(x.id)}/></li>)
+            
+            const today = new Date().toLocaleDateString();
+
+
+            return (
+                
+                <>
+                    <div className="header"><h1>오늘의 할일! {today}</h1></div>
+                    <div className="middle">
+                        <h2>ToDo-List</h2>
+                        <div className="contentDiv">
+                            <ul>
+                                {showList}
+                            </ul>    
+                        </div>    
+                        <input value={inputText} onChange={onChangeHandler} style={{marginTop: 20}}/>
+                        <button onClick={onClickAdd}>추가하기</button>
+                    </div>
+                    <div className="footerDiv"></div>
+                </>
+            )
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoList/>);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState} = React;
+
+        function App() {
+            const [members, setMembers] = useState([
+                {id: 1, name: '홍길동'},
+                {id: 2, name: '유관순'},
+                {id: 3, name: '이순신'}
+            ]);
+
+            const [inputText, setInputText] = useState('');
+            const [nextId, setNextId] = useState(4);
+
+            const onChangeHandler = e => setInputText(e.target.value);
+            const onClickHandler = () => {
+                const changeMembers = members.concat({
+                    id: nextId,
+                    name: inputText
+                });
+
+                setNextId(nextId + 1);
+                setMembers(changeMembers);
+                setInputText('');
+            }
+
+            const onRemove = id => {
+                const changeMembers = members.filter(member => member.id !== id);
+
+                setMembers(changeMembers);
+            }
+
+            const memberList = members.map(member => <li key={member.id} onDoubleClick={() => onRemove(member.id)}>{member.name}</li>);
+
+            return(
+                <>
+                    <input value={inputText} onChange={onChangeHandler}/>
+                    <button onClick={onClickHandler}>추가</button>
+                    <ul>{memberList}</ul>
+                </>
+
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

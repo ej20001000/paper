@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // state란?
+        // 컴포넌트 내부에서 바꿀 수 있는 값을 의미한다.
+        // props는 컴포넌트가 사용되는 과정에서 부모 컴포넌트가 설정하고 주는 읽기 전용의 값이지만
+        // state는 컴포넌트 내부에서 설정되는 값이다.
+
+        // 리액트는 클래스형 컴포넌트에서 state를 직접 사용할 수 있다. 하지만 함수형 컴포넌트는
+        // 직접 state를 사용하는 것이 불가능하다.
+
+        // 함수형 컴포넌트에서도 state를 관리할 수 있는 기능은 useState라는 hooks로 제공하고 있다.
+
+        class Counter extends React.Component {
+
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    number: 3
+                };
+            }
+            
+            render() {
+                const number = this.state.number;
+                return (
+                    <>
+                        <h1>{number}</h1>
+                        <button onClick={() => this.setState({number: number - 1})}>-1</button>
+                        <button onClick={() => this.setState({number: number + 1})}>+1</button>
+                    </>
+                );
+            }
+
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>

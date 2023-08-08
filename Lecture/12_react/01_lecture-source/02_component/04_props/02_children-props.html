@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function ChildNodePrinter(props) {
+
+            console.log(props.children);
+
+            return(
+                <>
+                    <h1>자식 노드가 가지고 있는 값은?</h1>
+                    <h3>children : <font style={{color: 'orangered'}}>{props.children}</font></h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <ChildNodePrinter>텍스트노드</ChildNodePrinter>
+        );
+    </script>
+</body>
+</html>
