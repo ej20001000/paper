@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+
+        const {useState} = React;
+
+        function SearchBox({setImgUrl}) {
+
+            const [emojiName, setEmojiName] = useState('');
+
+            const onChangeHandler = e => {
+                setEmojiName(e.target.value);
+                
+            }
+
+            const onClickHandler = () => {
+                axios.get('https://api.github.com/emojis').
+                then(result => {
+                    console.log(result.data);
+                    setImgUrl(result.data[emojiName]);
+                })
+            }
+
+            return (
+                <>
+                    <input type="text" onChange={onChangeHandler}/>
+                    <button onClick={onClickHandler}>검색</button>
+                </>
+            )
+        }
+
+        function ImageBox({imgUrl}) {
+
+            return !!imgUrl? <img src={imgUrl}/>: <h1>이미지가 없습니다</h1>;
+        }
+
+        function App() {
+            const [imgUrl, setImgUrl] = useState('');
+
+            return(
+                <>
+                    <SearchBox setImgUrl={setImgUrl}/>
+                    <br/>
+                    <ImageBox imgUrl={imgUrl}/>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

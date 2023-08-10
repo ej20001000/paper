@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState} = React;
+
+        function hardCalculator(num) {
+            for(let i = 0; i < 99999999; i++){}
+
+            return num + 10000;
+        }
+
+        function App() {
+            const [hardNumber, setHardNumber] = useState(0);
+
+            const hardSum = hardCalculator(hardNumber);
+
+            return (
+                <>
+                    <h3>어려운 계산기</h3>
+                    <input type="number" value={hardNumber} onChange={ e => setHardNumber(parseInt(e.target.value))}/>
+                    <span> + 10000 = {hardSum}</span>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

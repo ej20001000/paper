@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function increase(number) {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const result = number + 10;
+
+                    if(result > 50) {
+                        const e = new Error('numberTooBigException');
+
+                        return reject(e);
+                    }
+
+                    resolve(result);
+                }, 1000)
+            });
+
+            return promise;
+        }
+
+        async function run() {
+            try {
+                let result = await increase(0);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+                
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+            } catch (e) {
+                console.log(e, 'error detected');
+            }
+        }
+
+        run();
+    </script>
+</body>
+</html>

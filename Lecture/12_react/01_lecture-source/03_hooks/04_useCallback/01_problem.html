@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState, useEffect} = React;
+
+        function App() {
+            const [number, setNumber] = useState(0);
+            const [toggle, setToggle] = useState(false);
+
+            const printNumber = () => {
+                console.log(`current number: ${number}`);
+            }
+
+            useEffect(
+                () => console.log('number state값 변화 인지됨'),
+                [printNumber]
+            )
+
+            return(
+                <>
+                    <input 
+                        type="number"
+                        value={number}
+                        onChange={ e => setNumber(e.target.value) }
+                    />
+                    <button onClick={ () => setToggle(!toggle)}>{String(toggle)}</button>
+                    <br/>
+                    <button onClick={printNumber}>PrintNumberState</button>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

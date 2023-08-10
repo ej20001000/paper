@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState, useEffect, useMemo} = React;
+
+        function App() {
+
+            const [isKorea, setIsKorea] = useState(true);
+            const [number, setNumber] = useState(0);
+
+            // const location = isKorea? '한국': '외국';
+            
+            // const location = {
+            //     country: isKorea? '한국':'외국'
+            // };
+            
+            const location = useMemo(
+                () => ({country: isKorea? '한국':'외국'}),
+                [isKorea]
+            )
+
+            useEffect(
+                () => console.log('useEffect 호출됨'),
+                [location]
+            )
+
+            return(
+                <>
+                    <h2>지금 당신이 있는 위치는?</h2>
+                    <p>국가: {location.country}</p>
+                    <button onClick={ () => setIsKorea(!isKorea) }>국가 토글하기</button>
+                    <hr/>
+                    <h2>좋아하는 숫자를 입력 해주세요</h2>
+                    <input 
+                        type="number" 
+                        value={number} 
+                        onChange={ e => setNumber(e.target.value) }
+                    />
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

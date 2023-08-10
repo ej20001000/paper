@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        //랜더링 ====> 마운트 ====> 상태변경 ====> 언마운트 ====> 랜더링 ====> 마운트
+        //      effect                     effect                     effect
+        
+        //랜더링 ====> 마운트 ====> 언마운트
+        //      effect      cleanup       
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        const {useEffect, useState} = React;
+
+        function Counter() {
+            const [count, setCount] = useState(0);
+
+            useEffect(
+                () => {
+                    console.log('useEffect');
+
+
+                    // 물어볼 것
+                    const hi = setTimeout(() => console.log('hi'), 3000);
+
+                    return () => {
+                        clearTimeout(hi);
+                        console.log('clean-up');
+                    }
+                }
+            )
+
+            return (
+                <>
+                    <h1>count : {count}</h1>
+                    <button onClick={ () => setCount(count + 1) }>+1</button>
+                </>
+            )
+        }
+
+        root.render(<Counter/>);
+    </script>
+</body>
+</html>

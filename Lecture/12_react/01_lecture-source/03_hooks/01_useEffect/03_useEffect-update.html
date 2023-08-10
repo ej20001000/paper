@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        const {useState, useEffect} = React;
+
+        function LoginForm() {
+
+            const [user, setUser] = useState({
+                username: '',
+                password: ''
+            });
+
+            useEffect(
+                () => console.log('username update'),
+                [user.username]
+            )
+
+            useEffect(
+                () => console.log('password update'),
+                [user.password]
+            )
+
+            const onChangeHandler = e => {
+                setUser({
+                    ...user,
+                    [e.target.name]: e.target.value
+                });
+            }
+
+            return(
+
+            <>
+                <label>username : </label>
+                <input type="text" name="username" onChange={onChangeHandler}/>
+                <br/>
+                <label>password : </label>
+                <input type="password" name="password" onChange={onChangeHandler}/>
+                <br/>
+                <h3>username : {user.username}</h3>
+                <h3>password : {user.password}</h3>
+            </>
+
+            );
+        }
+
+        root.render(<LoginForm/>);
+    </script>
+</body>
+</html>

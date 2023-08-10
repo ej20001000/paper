@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // const {useState} = React;
+
+        // function Counter() {
+        //     const [state, setState] = useState({value: 0});
+
+        //     return (
+        //         <>
+        //             <h1>count:{state.value}</h1>
+        //             <button onClick={ () => setState({value: state.value - 1})}>-1</button>
+        //             <button onClick={ () => setState({value: state.value + 1})}>+1</button>
+        //         </>
+        //     );
+        // }
+
+            const {useReducer} = React;
+
+            function reducer(state, action) {
+                
+                switch(action.type) {
+                    case 'DECREMENT':
+                        return {value: state.value - 1};
+                    case 'INCREMENT':
+                        return {value: state.value + 1};
+                    default:
+                        return state;
+                }
+            }
+
+            function Counter() {
+                
+                const [state, dispatch] = useReducer(reducer, {value:0});
+
+                return(
+                    <>
+                        <h1>counter : {state.value}</h1>
+                        <button onClick={ () => dispatch({type: 'DECREMENT'})}>-1</button>
+                        <button onClick={ () => dispatch({type: 'INCREMENT'})}>+1</button>
+                        
+                    </>
+                )
+            }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // promise는 콜백 지옥과 같은 코드가 형성되지 않게 하는 방안으로 ES6에 도입되었다.
+        // 현재 시점에 ES6가 지원되지 않는 브라우저가 없기 때문에 별도 설정을 할 필요는 없지만,
+        // 과거에는 promise를 이용하는 경우 바벨을 이용하여 ES5로 트랜스파일링 해주어야 동작하는
+        // 브라우저가 존재했기 때문에 추가적인 설정이 필요했다.
+
+        function increase(number) {
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const result = number + 10;
+
+                    if(result > 50) {
+                        const e = new Error('numberTooBigException');
+
+                        return reject(e);
+                    }
+
+                    resolve(result);
+                }, 1000)
+            });
+
+            return promise;
+        }
+
+        increase(0).then(number => {
+            console.log(number)
+
+            return increase(number);
+        }).then(number => {
+            console.log(number);
+            return increase(number)
+        }).then(number => {
+            console.log(number);
+            return increase(number)
+        }).then(number => {
+            console.log(number);
+            return increase(number)
+        }).then(number => {
+            console.log(number);
+            return increase(number)
+        }).then(number => {
+            console.log(number);
+            return increase(number)
+        })
+        .catch(e => {
+            console.log(e, 'error detected');
+        })
+        .finally(() => {
+            console.log('fin');
+        });
+
+
+    </script>
+</body>
+</html>
