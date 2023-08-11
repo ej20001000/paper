@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "statusMessage": "일기 조회 성공",
+  "errorCode": null,
+  "data": {
+    "diaryNo": 1,
+    "diaryContent": "wow, amazing day!",
+    "likeCount": 100,
+    "feelingType": "nice",
+    "memberNickname": "ojingoo",
+    "commentList": [
+      {
+        "commentNo": 1,
+        "commentContent": "omg",
+        "memberNickname": "whoareu",
+        "createdDate": "2018-3-13"
+      },
+      // .....
+    ],
+    "liked": true,
+    "files": [
+      {
+        "fileNo": 1,
+        "fileDownloadUri": "127.0.0.1/files/20180313_020.jpg",
+        "fileType": "image/jpeg",
+        "size": 151243
+      },
+      // .....
+    ]
+  }
+}

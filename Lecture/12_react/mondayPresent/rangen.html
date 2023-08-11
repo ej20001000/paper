@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <style>
+        .mainDiv {
+            text-align: center;
+        }
+        .profileDiv {
+            font-size: 30;
+            margin-top: 50px;
+        }
+        .nicknameDiv{
+            margin-top: 50px;
+            font-size: 30;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
+        function RandomImage() {
+            const [imageUrl, setImageUrl] = useState('');
+
+            useEffect(() => {
+                setImageUrl("https://picsum.photos/200");
+            }, []);
+            
+            return (
+                <>
+                    <img src={imageUrl} />
+                </>
+            );
+
+        }
+
+        function RandomName() {
+            const [randName, setRandName] = useState('');
+
+            useEffect(() => {
+                fetch('https://api.api-ninjas.com/v1/randomuser', {
+                    method: "GET",
+                    headers: {
+                        'X-Api-Key': '0qcmVr4aCm5Fipy9b0dY1Q==Ov3Rvukn36i75yyR'
+                    },
+                    contentType: 'application/json'
+                })
+                .then(res => {
+                    return res.json()
+                })
+                .then(json => {
+                    setRandName(json.username);
+                })
+            }, []);
+
+            return(
+                <h3>{randName}</h3>
+            )
+        }
+
+        function App() {
+
+            return (
+                <>
+                    <div className="mainDiv">
+                        <h1>Random profile generator</h1>
+                        <div className="profileDiv">
+                            <h2>profile pic</h2>
+                            <RandomImage />
+                        </div>
+                        <div className="nicknameDiv">
+                            <h2>nickame</h2>
+                            <RandomName/>
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>

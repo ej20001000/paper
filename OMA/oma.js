@@ -18,10 +18,10 @@ function putOma() {
      
     console.log(this.id, whichOma,whichColor, blackP[whichOma]);
 
-    //보드 변수에 놓은 값넣기
+    // 보드 변수에 놓은 값넣기
     board[this.id - 1] = whichColor + whichOma
 
-    //삼각형 이상해서 예외처리
+    // 삼각형 이상해서 예외처리
     if(whichOma == 'a'){
         span.className = whichOma;
 
@@ -33,7 +33,7 @@ function putOma() {
             
     } else{
         span.style.borderBottom = null;
-        //보드에 클래스값 추가
+        // 보드에 클래스값 추가
         span.className = whichColor + ' ' + whichOma;
     }
 
