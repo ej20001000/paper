@@ -11,11 +11,13 @@
         .mainDiv {
             text-align: center;
         }
+
         .profileDiv {
             font-size: 30;
             margin-top: 50px;
         }
-        .nicknameDiv{
+
+        .nicknameDiv {
             margin-top: 50px;
             font-size: 30;
         }
@@ -28,25 +30,18 @@
 
         const { useState, useEffect } = React;
 
-        function RandomImage() {
-            const [imageUrl, setImageUrl] = useState('');
+        function Randoms() {
 
-            useEffect(() => {
-                setImageUrl("https://picsum.photos/200");
-            }, []);
-            
-            return (
-                <>
-                    <img src={imageUrl} />
-                </>
-            );
-
-        }
-
-        function RandomName() {
             const [randName, setRandName] = useState('');
+            const [imageUrl, setImageUrl] = useState('');
+            const [gen, setGen] = useState(true);
+
+            const generateHandler = () => {
+                setGen(!gen);
+            }
 
             useEffect(() => {
+
                 fetch('https://api.api-ninjas.com/v1/randomuser', {
                     method: "GET",
                     headers: {
@@ -54,33 +49,45 @@
                     },
                     contentType: 'application/json'
                 })
-                .then(res => {
-                    return res.json()
-                })
-                .then(json => {
-                    setRandName(json.username);
-                })
-            }, []);
+                    .then(res => {
+                        return res.json()
+                    })
+                    .then(json => {
+                        setRandName(json.username);
+                    })
 
-            return(
-                <h3>{randName}</h3>
-            )
+                fetch('https://picsum.photos/200')
+                .then(res => setImageUrl(res.url))
+
+            }, [gen]);
+
+            return (
+                <>
+                    <h3>프사가 고민될때</h3>
+                    <h3>닉네임을 못 정할때</h3>
+                    <div className="profileDiv">
+                        <h2>프로필 사진</h2>
+                        <img src={imageUrl} />
+                    </div>
+                    <div className="nicknameDiv">
+                        <h2>닉네임</h2>
+                        <h3>{randName}</h3>
+                    </div>
+                    <button onClick={generateHandler}>생성</button>
+                </>
+            );
+
+
         }
 
         function App() {
 
+            
+
             return (
                 <>
                     <div className="mainDiv">
-                        <h1>Random profile generator</h1>
-                        <div className="profileDiv">
-                            <h2>profile pic</h2>
-                            <RandomImage />
-                        </div>
-                        <div className="nicknameDiv">
-                            <h2>nickame</h2>
-                            <RandomName/>
-                        </div>
+                        <Randoms />
                     </div>
                 </>
             );
