@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/redux@4.2.1/dist/redux.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-redux@8.1.2/dist/react-redux.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {Provider, useSelector, useDispatch} = ReactRedux;
+        const {createStore} = Redux;
+
+        // Ducks 패턴에 의하면 초기값, 액션, 리듀서를 관련있는 state별로 modules 폴더에 만들어서 관리한다
+
+        // 초기값
+        const initialState = 0;
+
+        // 액션
+
+        // const increate = () => {
+        //     return {};
+        // }
+
+        // 액션 타입 상수 정의
+        const INCREMENT = 'count/INCREMENT';
+        const DECREMENT = 'count/DECREMENT';
+
+        const increase = () => ({
+            type: INCREMENT,
+            payload: {
+                incrementValue: 1
+            }
+        });
+
+
+        const decrease = () => ({
+            type: DECREMENT,
+            payload: {
+                decrementValue: 1
+            }
+        });
+
+
+        // 리듀서
+        function reducer(state= initialState, {type, payload}) {
+            switch (type) {
+                case INCREMENT:
+                    return state + payload.incrementValue;
+                case DECREMENT:
+                    return state - payload.decrementValue;
+                default:
+                    return state;
+            }
+        }
+
+        // ------------------------------------------------------------------------
+
+        function App() {
+
+            const count = useSelector(state => state);
+            const dispatch = useDispatch();
+
+            const increaseCount = () => dispatch(increase());
+            const decreaseCount = () => dispatch(decrease());
+            
+            
+            return (
+                <>
+                    <h1>Count : {count}</h1>
+                    <button onClick={decreaseCount}>-1</button>
+                    <button onClick={increaseCount}>+1</button>
+                </>
+            )
+        }
+
+        // --------------------------------------------------------------------------
+
+        const store = createStore(
+            reducer,
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        );
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        );
+    </script>
+</body>
+</html>
