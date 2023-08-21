@@ -6,35 +6,44 @@ import boxStyle from "./DigimonList.module.css";
 function DigimonList() {
   const [page, setPage] = useState(0);
   const [resultList, setResultList] = useState([]);
-  const gotPageInfo = useRef(false);
+  const gotPageInfo = useRef(true);
 
 
-  useEffect(() => {
 
-    async function setSavedPage() {
-      const savedPage = await localStorage.getItem("currentPage");
+  function setSavedPage() {
+    return new Promise(resolve => {
+      const savedPage = sessionStorage.getItem("currentPage");
       console.log(savedPage ? "exist currentPage : " + savedPage : "none");
-      gotPageInfo.current = true;
-      await setPage(savedPage ? parseInt(savedPage) : 0);
-    }
+      gotPageInfo.current = false;
+      console.log(gotPageInfo);
+      setPage(savedPage ? parseInt(savedPage) : 0);
+    })
+  }
+  // useEffect(() => {
 
-    setSavedPage();
-  }, []);
+
+  //   setSavedPage();
+  // }, []);
 
   useEffect(() => {
+
+    console.log(gotPageInfo);
+
+
     async function showList() {
+
+      if (gotPageInfo.current) await setSavedPage();
+      console.log(page);
       setResultList(await getDigimonList(page));
 
-      localStorage.setItem("currentPage", page);
-      console.log("current page : " + localStorage.getItem("currentPage"));
+      sessionStorage.setItem("currentPage", page);
+      console.log("current page : " + sessionStorage.getItem("currentPage"));
       console.log("page : " + page);
     }
 
-    console.log('here');
-    
-    if(gotPageInfo.current)
+
     showList();
-  }, [page, gotPageInfo]);
+  }, [page]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

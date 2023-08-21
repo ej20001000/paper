@@ -1,6 +1,6 @@
 export function getDigimonList(page) {
     return new Promise((Resolve) => {
-        fetch(`https://www.digi-api.com/api/v1/digimon?page=${page}&pageSize=40`)
+        fetch(`https://www.digi-api.com/api/v1/digimon?page=${page}&pageSize=42`)
         .then(res => res.json())
         .then(json => {
             Resolve(json.content);

@@ -1,0 +1,14 @@
+{
+  "name": "02_process",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01_process-module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
