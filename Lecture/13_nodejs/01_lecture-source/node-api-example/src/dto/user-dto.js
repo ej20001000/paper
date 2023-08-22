@@ -1,4 +1,6 @@
 class UserDTO {
+
+    id;
     name;
     age;
     email;
@@ -8,4 +10,10 @@ class UserDTO {
         this.age = data.age;
         this.email = data.email;
     }
+
+    setId(id) {
+        this.id = id;
+    }
 }
+
+module.exports = UserDTO;
