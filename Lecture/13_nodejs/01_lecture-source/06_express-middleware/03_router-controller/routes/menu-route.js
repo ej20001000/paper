@@ -1,18 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const MenuController = require('../controllers/menu-controller');
 
-router.get('/', (req, res) => {
-    res.send('<h1>GET : /menu 요청에 대한 라우터 분리 후 응답</h1>');
-});
+router.get('/', MenuController.getMenus);
 
-router.get('/:menuCode', (req, res) => {
-});
+router.get('/:menuCode', MenuController.getMenu);
 
-router.post('/', (req, res) => {
-});
+router.post('/', MenuController.registMenu);
 
-router.put('/', (req, res) => {
-});
+router.put('/', MenuController.modifyMenu);
 
-router.delete('/', (req, res) => {
-});
+router.delete('/', MenuController.removeMenu);
+
+module.exports = router;

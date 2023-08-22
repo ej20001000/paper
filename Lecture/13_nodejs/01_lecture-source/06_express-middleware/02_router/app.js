@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const logger = require('morgan');
 
 app.listen(8888, () => {
     console.log('Server is running port 8888!');
@@ -22,6 +23,8 @@ app.listen(8888, () => {
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const menuRouter = require('./routes/menu');
+
+app.use(logger('dev'));
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
