@@ -1,0 +1,10 @@
+{
+    "title" : "Ironman",
+    "category" : "Action",
+    "description" : "Ironman is Action movie",
+    "artistNo" : 5,
+    "fileLocation" : "http://localhost:8080/lotr.jpg",
+    "price" : 10,
+    "year" : 2000
+
+}
