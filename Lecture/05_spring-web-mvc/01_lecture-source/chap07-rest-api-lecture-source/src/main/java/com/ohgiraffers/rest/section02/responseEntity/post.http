@@ -1,0 +1,28 @@
+### Send POST request with json body
+POST localhost:8080/responseEntity/users
+Content-Type: application/json
+
+{
+  "id": "user04",
+  "pwd": "pwd04",
+  "name": "신사임당",
+  "enrollDate": "2023-09-05T01:48:10.890+00:00"
+}
+
+### GET find user
+GET localhost:8080/responseEntity/users/3
+
+### PUT update user
+PUT localhost:8080/responseEntity/users/1
+Content-Type: application/json
+
+{
+  "id": "user05",
+  "pwd": "pass05",
+  "name": "임꺽정",
+  "enrollDate": "2023-09-05T01:48:10.890+00:00"
+}
+
+### DELETE delete user
+DELETE localhost:8080/responseEntity/users/3
+```
