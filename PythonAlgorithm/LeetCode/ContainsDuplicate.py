@@ -1,12 +1,19 @@
-nums = [1,2,3,1]
+def containsDuplicate(nums):
+    """
+    :type nums: List[int]
+    :rtype: bool
+    """
+    # 딕셔너리 사용으로 값 비교가 아닌 키값을 사용하여 해당 키값이 존재하는 지 보는 식으로 구현
+    numDict = {}
 
-
-def checkDuplicate(nums):
-    check_nums = set()
     for num in nums:
-        if num in check_nums:
+        # 키값이 있는지 봄
+        if num in numDict:
             return True
-        check_nums.add(num)
+        numDict[num] = 1
+
     return False
 
-print(checkDuplicate(nums))
+a = containsDuplicate([1, 2, 3, 4])
+
+print(a)
